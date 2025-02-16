@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+<h4 class="bg-light">CURRENT STOCKHOLDINGS</h4>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th class="text-start">Stock</th>
+                <th class="text-start"></th>
+                <th>Shares</th>
+                <th>Current Price</th>
+                <th>Stocks value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in user_profile %}
+            <tr>
+                <td class="text-start">{{ row["stock_symbol"] }}</td>
+                <td class="text-start">{{ row["stock_name"] }}</td>
+                <td>{{ row["shares"] }}</td>
+                <td>{{ row["updated_price"] | usd }}</td>
+                <td>{{ row["total_price"] | usd }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td class="pt-3 border-0 fw-bold text-end" colspan="4">Cash</td>
+                <td class="pt-3 border-0 text-center" style="background-color: lightgrey; background-clip: content-box">{{ user_cash[0]["cash"] | usd }}</td>
+            </tr>
+            <tr>
+                <td class="border-0 fw-bold text-end" colspan="4">TOTAL</td>
+                <td class="border-0 text-center" style="background-color: lightgrey; background-clip: content-box">{{ (user_cash[0]["cash"] + user_worth) | usd }}</td>
+            </tr>
+        </tfoot>
+    </table>
+
+{% endblock %}

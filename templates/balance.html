@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Check balance
+{% endblock %}
+
+{% block main %}
+
+    <div class="mb-3 container">
+        <div class="row">
+            <div class = "col">
+                <div class="text-end">
+                    Current balance:
+                </div>
+            </div>
+            <div class = "col">
+                <div class="text-start">
+                    <h6 class="fw-bold" id="current_balance" style="font-size:large">{{ user_balance | usd }}</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form action="/profile/balance" method="post" onSubmit="return confirm('Are you sure you wish to update the balance?');">
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto mb-3" name="funds_add" min="1" placeholder="Enter amount" type="number" step="any" required="required">
+            <button class="btn-primary btn" type="submit">Add to balance</button>
+        </div>
+    </form>
+
+{% endblock %}

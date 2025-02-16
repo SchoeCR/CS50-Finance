@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+    <div class="mb-3">
+        <h3>Quote:</h3>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    Symbol
+                </div>
+                <div class="col-lg">
+                    Stock
+                </div>
+                <div class="col-sm">
+                    Price (USD)
+                </div>
+                <div class="col-"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <h6>{{stock["symbol"]}}</h6>
+                </div>
+                <div class="col-lg">
+                    <h6>{{stock["name"]}}</h6>
+                </div>
+                <div class="col-sm">
+                    <h6>{{stock["price"] | usd}}</h6>
+                </div>
+                <div class="col-">
+                    <a href="/buy" class="btn btn-primary">Buy</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <a href="/quote" class="btn btn-primary">New Quote</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
